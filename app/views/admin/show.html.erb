@@ -1,0 +1,20 @@
+<h1>Statistics</h1>
+<div>
+<%=link_to('Back to users','/users') %>
+</div>
+<div class="row">
+   <div class="col-md-4">
+         <% if @user.nil? %>
+               Nu exista admin
+         <% else %>
+         <div class="card user-card">
+         <div class="card-body">
+           <h5 class="card-title"><%='Number of users'%><br></h5>
+           <p class="card-text">
+           total: <%= User.count %><br>
+           admins: <%= User.where(admin:true).count %>
+       </div>
+       </div>
+         <% end %>
+   </div>
+  

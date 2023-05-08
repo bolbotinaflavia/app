@@ -1,0 +1,13 @@
+<h1> Posts</h1>
+<% @post=Post.new %>
+<%= render partial: 'posts/create' %>
+<ul>
+	<% @posts=@posts.paginate(page:params[:page],per_page: 10)%>
+	<% @posts.each do |post| %>
+	<li >
+        <%= render post%>	
+		</li>
+	<% end %>
+	<%= render partial: 'posts/pagination' %>
+</ul>
+

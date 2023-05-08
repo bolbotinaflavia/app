@@ -1,0 +1,16 @@
+<div class="card user-card">
+  <div class="card-body">
+    <h5 class="card-title"><%=link_to(user.name,"/users/#{user.id}")%><br></h5>
+    <p class="card-text">email: <%= user.email %><br>
+age: <%= user.age %><br>
+gender: <%= user.gender %><br>
+phone_number: <%=user.phone_number %></p>
+<% if current_user.admin? && !current_user?(user) && !user.admin%>
+<%= link_to 'delete', user, data: {turbo_method: :delete,turbo_confirm:'Are you sure?'} %><br>
+<% end %>
+<% if current_user.admin? && !current_user?(user) && !user.admin%>
+<%= link_to 'make admin',user,action: :make_admin,turbo_method: :post%>
+<% end %>
+</div>
+</div>
+

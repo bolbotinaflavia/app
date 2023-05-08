@@ -1,0 +1,27 @@
+<h1> Users </h1>
+<% if flash[:error] %>
+<div class="alert alert-danger" role="alert">
+<%= flash[:error]%>
+</div>
+<% end %>
+<% if flash[:succes] %>
+#culoarea verde ??
+<div class="alert alert" role="alert">
+<%= flash[:succes]%>
+</div>
+<% end %>
+<ul>
+	<% @users.each do |user| %>
+	<li >
+        <%= render user 	%>
+		<!-- <%= render partial:'user', locals:{ user: user } %> -->
+				</li>
+	<% end %>
+</ul>
+
+<%
+=begin%>
+<%  %> - doar ruleaza cod de ruby
+  <%= %> - afiseaza codul de ruby
+<%
+=end%>

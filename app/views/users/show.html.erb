@@ -1,0 +1,30 @@
+<div>
+<%=link_to('Back to users','/users') %>
+</div>
+<% if flash[:succes] %>
+<div class="alert alert-success" role="alert">
+<%=flash[:succes]%>
+</div>
+<% end %>
+<div class="row">
+   <div class="col-md-4">
+         <% if @user.nil? %>
+               Nu exista userul
+         <% else %>
+               <%= render @user %>
+               <%= render 'shared/stats' %>
+                       <% end %>
+              <% if current_user.id==@user.id %>
+              <%= render partial: 'posts/create' %>
+              <% end %>
+             </div>
+             
+             <% if @user.present? %>
+             <div class="col-md-6">
+               <h3> Posts (<%= @posts.count%>)</h3>
+               <%= render @posts %>
+               <%= render partial: 'posts/pagination' %>
+               
+             </div>
+           <% end %>   
+</div>

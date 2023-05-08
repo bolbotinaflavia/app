@@ -7,9 +7,44 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Twitter</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Users', '/users', class: 'nav-link' %>
+        </li>
+        <%= link_to 'Posts', '/posts', class: 'nav-link' %>
+      </ul>
+      <% if logged_in? %>
+      <div class="navbar-nav pull-right">
+      <%= link_to 'Logout', logout_path, data:{turbo_method: :delete}, class: 'nav-link btn btn-link' %>
+      </div>
+      <div class="navbar-nav pull-right">
+      <%=link_to current_user.name,user_path(current_user),class: 'nav-link' %>
+      </div>
+      <% else %>
+      <div class="navbar-nav pull-right">
+            <%= link_to 'Sign Up', new_user_path, class: 'nav-link' %>
+      </div>
+      <div class="navbar-nav pull-right">
+            <%= link_to 'Login', '/login', class: 'nav-link' %>
+      </div>
+      <% end %>
+    <div>
+    <div>
+  </div>
+</nav>
+<div class="p-2">
+<%= yield %>
+</div>
   </body>
 </html>
